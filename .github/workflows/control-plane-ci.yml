@@ -11,7 +11,7 @@ on:
       - "control-plane-policy.json"
       - ".github/workflows/control-plane-ci.yml"
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - "control_plane/**"
       - "tests/control_plane/**"
@@ -33,4 +33,5 @@ jobs:
       - run: pip install -r requirements-control-plane-dev.txt
       - run: pytest -q tests/control_plane
       - run: python -m compileall -q control_plane
+
 
