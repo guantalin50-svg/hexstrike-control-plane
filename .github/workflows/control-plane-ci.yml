@@ -6,16 +6,17 @@ on:
       - "control_plane/**"
       - "tests/control_plane/**"
       - "requirements-control-plane*.txt"
+      - ".github/workflows/control-plane-ci.yml"
       - "Dockerfile.control-plane"
       - "docker-compose.control-plane.yml"
       - "control-plane-policy.json"
-      - ".github/workflows/control-plane-ci.yml"
   push:
     branches: [main]
     paths:
       - "control_plane/**"
       - "tests/control_plane/**"
       - "requirements-control-plane*.txt"
+      - ".github/workflows/control-plane-ci.yml"
 
 permissions:
   contents: read
