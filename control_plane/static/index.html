@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HexStrike Control Plane</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background:#07110d; color:#e8f5ee; }
+    body { max-width: 1080px; margin: 0 auto; padding: 48px 24px; }
+    h1 { margin-bottom: 8px; } .muted { color:#8fa69a; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:32px 0; }
+    .card { background:#0d1d16; border:1px solid #214c36; border-radius:14px; padding:20px; }
+    .badge { display:inline-block; padding:5px 9px; border-radius:999px; color:#8ff0b8; background:#123d27; }
+    code { color:#9ee6bd; } a { color:#82dca8; }
+  </style>
+</head>
+<body>
+  <span class="badge">Fail-closed security gateway</span>
+  <h1>HexStrike Control Plane</h1>
+  <p class="muted">Policy checks, human approval, controlled execution boundaries, and tamper-evident audit records for HexStrike AI.</p>
+  <div class="grid">
+    <div class="card"><h2>1. Evaluate</h2><p>Check the requested tool and target against the local policy.</p></div>
+    <div class="card"><h2>2. Approve</h2><p>Pause elevated actions until an accountable human approves them.</p></div>
+    <div class="card"><h2>3. Execute</h2><p>Forward only approved requests to a configured HexStrike server.</p></div>
+    <div class="card"><h2>4. Audit</h2><p>Record a hash-chained history of decisions and executions.</p></div>
+  </div>
+  <p>API documentation: <a href="/docs"><code>/docs</code></a> · Health check: <a href="/health"><code>/health</code></a></p>
+</body>
+</html>

@@ -1,0 +1,3 @@
+-r requirements-control-plane.txt
+pytest>=8.2,<9
+

@@ -1,0 +1,22 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+COPY requirements-control-plane.txt ./
+RUN pip install --no-cache-dir -r requirements-control-plane.txt
+
+COPY control_plane ./control_plane
+COPY control-plane-policy.json ./control-plane-policy.json
+
+RUN useradd --create-home --uid 10001 controlplane \
+    && mkdir -p /app/data \
+    && chown -R controlplane:controlplane /app
+
+USER controlplane
+EXPOSE 8890
+
+CMD ["uvicorn", "control_plane.app:app", "--host", "0.0.0.0", "--port", "8890"]
+

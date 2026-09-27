@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "targets": {
+    "allow": [
+      "localhost",
+      "127.0.0.1/32",
+      "::1/128",
+      "*.test",
+      "*.invalid"
+    ],
+    "deny": []
+  },
+  "tools": {
+    "allow": [
+      "nmap",
+      "nuclei",
+      "wafw00f"
+    ],
+    "require_approval": [
+      "amass",
+      "dirsearch",
+      "ffuf",
+      "feroxbuster",
+      "gobuster",
+      "nikto",
+      "sqlmap",
+      "subfinder",
+      "zap"
+    ],
+    "deny": [
+      "hydra",
+      "metasploit",
+      "msfvenom",
+      "responder"
+    ],
+    "default": "deny"
+  },
+  "parameters": {
+    "nmap": ["scan_type", "ports", "use_recovery"],
+    "nuclei": ["severity", "tags", "use_recovery"],
+    "wafw00f": [],
+    "gobuster": [],
+    "nikto": [],
+    "sqlmap": [],
+    "ffuf": [],
+    "feroxbuster": [],
+    "dirsearch": [],
+    "subfinder": [],
+    "amass": [],
+    "zap": []
+  }
+}
+

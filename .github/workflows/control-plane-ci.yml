@@ -1,0 +1,36 @@
+name: Control Plane CI
+
+on:
+  pull_request:
+    paths:
+      - "control_plane/**"
+      - "tests/control_plane/**"
+      - "requirements-control-plane*.txt"
+      - "Dockerfile.control-plane"
+      - "docker-compose.control-plane.yml"
+      - "control-plane-policy.json"
+      - ".github/workflows/control-plane-ci.yml"
+  push:
+    branches: [master]
+    paths:
+      - "control_plane/**"
+      - "tests/control_plane/**"
+      - "requirements-control-plane*.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-control-plane-dev.txt
+      - run: pip install -r requirements-control-plane-dev.txt
+      - run: pytest -q tests/control_plane
+      - run: python -m compileall -q control_plane
+

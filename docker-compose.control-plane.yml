@@ -1,0 +1,22 @@
+services:
+  control-plane:
+    build:
+      context: .
+      dockerfile: Dockerfile.control-plane
+    environment:
+      CONTROL_PLANE_API_KEY: ${CONTROL_PLANE_API_KEY:?set CONTROL_PLANE_API_KEY}
+      CONTROL_PLANE_DATABASE_PATH: /app/data/control-plane.db
+      CONTROL_PLANE_POLICY_PATH: /app/config/policy.json
+      HEXSTRIKE_URL: ${HEXSTRIKE_URL:-http://host.docker.internal:8888}
+    volumes:
+      - ./control-plane-policy.json:/app/config/policy.json:ro
+      - control-plane-data:/app/data
+    ports:
+      - "127.0.0.1:8890:8890"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  control-plane-data:
+
